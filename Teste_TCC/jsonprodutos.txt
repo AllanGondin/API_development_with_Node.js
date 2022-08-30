@@ -1,0 +1,37 @@
+[
+  '{{repeat(2)}}',
+  {
+    id_nota: '{{objectId()}}',
+    data: '{{date(new Date(2014, 0, 1), new Date(), "dd/MM/YYYY")}}',
+    hora: '{{date(new Date(2014, 0, 1), new Date(), "hh:mm")}}',
+    departamento: '{{floating(1000, 4000, 2, "$0,0.00")}}',
+    valor: '{{integer(20, 40)}}',
+    eyeColor: '{{random("blue", "brown", "green")}}',
+    name: '{{firstName()}} {{surname()}}',
+    gender: '{{gender()}}',
+    company: '{{company().toUpperCase()}}',
+    email: '{{email()}}',
+    phone: '+1 {{phone()}}',
+    address: '{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}',
+    registered: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}',
+    latitude: '{{floating(-90.000001, 90)}}',
+    longitude: '{{floating(-180.000001, 180)}}',
+    produtos: [
+      '{{repeat(1,10)}}',
+      {
+        id: '{{index()}}',
+        nome_produto: function (tags) {
+      var fruits = ['Saco de lixo 50l','Suco sachê','Lombo','Lustra móveis','Salsa','Vodka','Suco caixinha 500ml','Peito de Frango','Sabão em pó','Bolacha','Rosquinha','Leite desnatado litro','Limpa vidros','Jiló','Detergente','Sal','Costela de Porco','Amaciante','Quiabo','Rocambole','Pão de Sal','Sardinha','Buchinha de pia','Baguete','Melancia','Banana','Esponja de aço','Achocolatado','Espinafre','Batata','Whiskey','Condicionador','Picanha','Filé de Frango','Peixe','Chicória','Atum','Cerveja','Sabão em pedra','Farinha de trigo','Suco garrafa 1l','Presunto','Café','Extrato de tomate','Peito de Peru','Frango empanado','Refrigerante 2l','Salsicha','Linguiça Calabresa','Uva','Shampo','Sabonete','Pão de banha','Cenoura','Farofa pronta','Farinha de milho','Bolo','Feijão 2kg','Carne Seca','Alface','Tira manchas','Fubá','Leite integral litro','Chuchu','Tomate','Queijo','Cebola','Abacate','Pão de Frios','Mortadela','Linguiça Toscana','Molho de tomate','Açucar','Farinha de mandioca','Ovos','Fraldinha','Beterraba','Mamão','Melão','Saco de lixo 30l','Mandioca','Macarrão','Água sanitária','Alcool','Desinfetante','Cheiro verde','Arroz 5kg','Couve'];
+      return fruits[tags.integer(0, fruits.length - 1)];
+    }
+      }
+    ],
+    greeting: function (tags) {
+      return 'Hello, ' + this.name + '! You have ' + tags.integer(1, 10) + ' unread messages.';
+    },
+    favoriteFruit: function (tags) {
+      var fruits = ['apple', 'banana', 'strawberry'];
+      return fruits[tags.integer(0, fruits.length - 1)];
+    }
+  }
+]
